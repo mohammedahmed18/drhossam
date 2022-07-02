@@ -1,0 +1,124 @@
+﻿@model dashboard_HospitalGuide_.Models.Department
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>اضافه قسم جديد</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="~/forms/css/bootstrap.css" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/forms/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/forms/css/responsive.css" rel="stylesheet" />
+    <script>
+        function s() {
+            
+            alert("warning")
+        }
+    </script>
+    <style>
+        .col{
+            color:black;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <section class="contact_section" style="width:1200px;padding-top:40px;background-color: #0AC88B;" onload = "s();">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="contact-form" style="padding-top:4px">
+                        <h5>
+                            اضافه قسم جديد
+                        </h5>
+                        <form action="">
+                            <div>
+                                <label style="margin-left:470px;margin-bottom:1px;color:white" class="col-md-4"> اسم القسم</label>
+
+                                @Html.EditorFor(model => model.dept_Name, new { htmlAttributes = new { @class = "form-control", placeholder = "اسم القسم" } })
+                                @Html.ValidationMessageFor(model => model.dept_Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label  style="margin-left:700px;margin-bottom:1px;color:white;" class="col-md-4" > عدد الاسره الفارغه</label>
+
+                                @Html.EditorFor(model => model.dept_NumberOfemptybed, new { htmlAttributes = new { @class = "form-control", placeholder = "عدد الاسره الفارغه" } })
+                                @Html.ValidationMessageFor(model => model.dept_Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label style="margin-left:470px;margin-bottom:1px;color:white" class="col-md-4"> عدد الاسره</label>
+
+                                @Html.EditorFor(model => model.dept_NumberOfBed, new { htmlAttributes = new { @class = "form-control", placeholder = "عدد الاسره" } })
+                                @Html.ValidationMessageFor(model => model.dept_NumberOfBed, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label style="margin-left:470px;margin-bottom:1px;color:white" class="col-md-4">وصف القسم </label>
+
+                                @Html.EditorFor(model => model.dept_Descripation, new { htmlAttributes = new { @class = "form-control", placeholder = "وصف القسم" } })
+                                @Html.ValidationMessageFor(model => model.dept_Descripation, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label style="margin-left:470px;margin-bottom:1px;color:white" class="col-md-4">معلومات عن القسم</label>
+
+                                @Html.EditorFor(model => model.dept_Info, new { htmlAttributes = new { @class = "form-control", placeholder = "معلومات عن القسم" } })
+                                @Html.ValidationMessageFor(model => model.dept_Info, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label style="margin-left:470px;margin-bottom:1px;color:white" class="col-md-4"> عدد التمريض</label>
+
+                                @Html.EditorFor(model => model.dept_NumberOfEmp, new { htmlAttributes = new { @class = "form-control", placeholder = "عدد التمريض" } })
+                                @Html.ValidationMessageFor(model => model.dept_NumberOfEmp, "", new { @class = "text-danger" })
+                            </div>
+                            
+
+                            <div class="d-flex justify-content-center">
+                                <input type="submit" value="اضافه" class="btn_on-hover" style="background-color: white; color: #0AC88B" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6" style="right:370px;top:-50px;">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h3>
+                                اضافه 
+                            </h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+
+<div>
+    @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

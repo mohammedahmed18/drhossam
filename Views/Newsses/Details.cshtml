@@ -1,0 +1,51 @@
+﻿@model dashboard_HospitalGuide_.Models.Newss
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Newss</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.News_Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.News_Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.News_Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.News_Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.News_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.News_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin.Admin_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.Admin_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.News_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

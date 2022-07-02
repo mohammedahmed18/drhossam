@@ -1,0 +1,43 @@
+﻿@model dashboard_HospitalGuide_.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role_ID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Admin_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,97 @@
+﻿@model dashboard_HospitalGuide_.Models.Admin
+@{
+    Layout = null;
+}
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/assets/app.css" />
+    <title>Log in</title>
+</head>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <body class="bg-white">
+        <div class="header bg-green py-7 py-lg-6">
+            <div class="container">
+                <div class="header-body text-center mb-7">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5 col-md-6">
+                            <h1 class="text-white">
+                                تسجيل الدخول
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="separator separator-bottom separator-skew zindex-100">
+                <svg x="0"
+                     y="0"
+                     viewBox="0 0 2560 100"
+                     preserveAspectRatio="none"
+                     version="1.1"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+        </div>
+
+        <div class="container mt--8 pb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-7">
+                    <div class="card bg-secondary shadow border-0">
+                        <div class="card-header bg-transparent pb-5">
+                            <div class="text-muted text-center mt-2 mb-3">
+                                <strong>
+                                    تسجيل الدخول
+                                </strong>
+                            </div>
+                            <div class="btn-wrapper text-center"></div>
+                        </div>
+                        <div class="card-body px-lg-5 py-lg-5">
+                            <div class="text-center text-muted mb-4"></div>
+                            <form role="form" method="POST" action="{{ route('login">
+                <div
+                  class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
+                                <div class="input-group input-group-alternative">
+                                    @Html.EditorFor(model => model.Admin_Name, new { htmlAttributes = new { @class = "form-control", placeholder = "اسم المستخدم"}
+                                    })
+                                    @Html.ValidationMessageFor(model => model.Admin_Name, "", new { @class = "text-danger" })
+                                    <span class="lnr lnr-user"></span>
+                                </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                            <div class="input-group input-group-alternative">
+                                @Html.EditorFor(model => model.Admin_Password, new { htmlAttributes = new { @class = "form-control", placeholder = "كلمه السر" , name = "password", type = "password" } })
+                                @Html.ValidationMessageFor(model => model.Admin_Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="
+                    custom-control custom-control-alternative custom-checkbox
+                  ">
+                            <input class="custom-control-input"
+                                   name="remember"
+                                   id="customCheckLogin"
+                                   type="checkbox" />
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success my-4">
+                               تسجيل الدخول
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <a href="{{ route('password.request" class="badge badge-light">
+                            <small>Forgot password?</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </body>
+}

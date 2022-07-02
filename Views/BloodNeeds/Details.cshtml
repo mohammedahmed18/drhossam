@@ -1,0 +1,35 @@
+﻿@model dashboard_HospitalGuide_.Models.BloodNeed
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BloodNeed</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsNeeded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsNeeded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blood.Blood1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blood.Blood1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

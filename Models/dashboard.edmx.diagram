@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b405115040ca42329ff583c74014c431" Name="Diagram1" ZoomLevel="91">
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.Admin" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.Care_Units" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.Department" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Hospital_Services_GiudDBModel.FK_Care_Units_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="Hospital_Services_GiudDBModel.FK_Department_Admin" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.Role" Width="1.5" PointX="0.75" PointY="4.625" />
+        <AssociationConnector Association="Hospital_Services_GiudDBModel.FK_Admin_Roles11" />
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.Artical" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.Newss" Width="1.5" PointX="3" PointY="1.75" />
+        <AssociationConnector Association="Hospital_Services_GiudDBModel.FK_Articals_Admin" />
+        <AssociationConnector Association="Hospital_Services_GiudDBModel.FK_Newss_Admin" />
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.patient" Width="1.5" PointX="5.25" PointY="9.25" />
+        <AssociationConnector Association="Hospital_Services_GiudDBModel.FK_patient_Admin" />
+        <AssociationConnector Association="Hospital_Services_GiudDBModel.FK_patient_Care_Units" />
+        <AssociationConnector Association="Hospital_Services_GiudDBModel.FK_patient_Department" />
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.Blood" Width="1.5" PointX="5.375" PointY="4" />
+        <EntityTypeShape EntityType="Hospital_Services_GiudDBModel.BloodNeed" Width="1.5" PointX="7.625" PointY="3.875" />
+        <AssociationConnector Association="Hospital_Services_GiudDBModel.FK_BloodNeed_Blood" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

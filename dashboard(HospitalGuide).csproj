@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{590F2A64-BB7B-46B5-B21C-02E3991A20A3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dashboard_HospitalGuide_</RootNamespace>
+    <AssemblyName>dashboard%28HospitalGuide%29</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44349</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\ArticalsController.cs" />
+    <Compile Include="Controllers\BloodNeedsController.cs" />
+    <Compile Include="Controllers\Care_UnitsController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewssesController.cs" />
+    <Compile Include="Controllers\patients1Controller.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Artical.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Blood.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BloodNeed.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Care_Units.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dashboard.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dashboard.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dashboard.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dashboard.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dashboard.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Newss.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\patient.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\app.css" />
+    <Content Include="assets\css\all.min.css" />
+    <Content Include="assets\css\animate.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\fontawsom-all.min.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\images\1357615_0.jpg" />
+    <Content Include="assets\images\5.jpg" />
+    <Content Include="assets\images\Alzheimer.jpg" />
+    <Content Include="assets\images\Alzheimer2.jpg" />
+    <Content Include="assets\images\atefmorsi.jpg" />
+    <Content Include="assets\images\boct.jpg" />
+    <Content Include="assets\images\covid19...jpg" />
+    <Content Include="assets\images\covid19.jpg" />
+    <Content Include="assets\images\diabetes.jpeg" />
+    <Content Include="assets\images\dialysis unit.jpg" />
+    <Content Include="assets\images\dr-img.png" />
+    <Content Include="assets\images\images %281%29.jpg" />
+    <Content Include="assets\images\logo.jpg" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\logo2.jpg" />
+    <Content Include="assets\images\oxgen.jpg" />
+    <Content Include="assets\images\part_of_team.jpg" />
+    <Content Include="assets\images\services\s1.jpg" />
+    <Content Include="assets\images\services\s2.jpg" />
+    <Content Include="assets\images\services\service-1.jpg" />
+    <Content Include="assets\images\services\service-2.jpg" />
+    <Content Include="assets\images\services\service-3.jpg" />
+    <Content Include="assets\images\slider\slider-1.jpg" />
+    <Content Include="assets\images\slider\slider-2.jpg" />
+    <Content Include="assets\images\slider\slider-3.jpg" />
+    <Content Include="assets\images\team\t1.jpg" />
+    <Content Include="assets\images\team\t2.jpg" />
+    <Content Include="assets\images\team\t3.jpg" />
+    <Content Include="assets\images\team\t4.jpg" />
+    <Content Include="assets\images\teb.jpg" />
+    <Content Include="assets\images\thalassemia.jpg" />
+    <Content Include="assets\images\Thyroid.jpg" />
+    <Content Include="assets\images\vitiligo.jpg" />
+    <Content Include="assets\images\women.jpeg" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\jquery-3.2.1.min.js" />
+    <Content Include="assets\js\popper.js" />
+    <Content Include="assets\js\popper.min.js" />
+    <Content Include="assets\js\script.js" />
+    <Content Include="assets\plugins\grid-gallery\css\grid-gallery.css" />
+    <Content Include="assets\plugins\grid-gallery\css\grid-gallery.min.css" />
+    <Content Include="assets\plugins\grid-gallery\js\grid-gallery.js" />
+    <Content Include="assets\plugins\grid-gallery\js\grid-gallery.min.js" />
+    <Content Include="assets\plugins\owl\owl.carousel.min.css" />
+    <Content Include="assets\plugins\owl\owl.carousel.min.js" />
+    <Content Include="assets\plugins\owl\owl.theme.css" />
+    <Content Include="assets\plugins\scroll-fixed\jquery-scrolltofixed-min.js" />
+    <Content Include="assets\plugins\slider\css\owl.carousel.min.css" />
+    <Content Include="assets\plugins\slider\css\owl.theme.default.css" />
+    <Content Include="assets\plugins\slider\js\owl.carousel.min.js" />
+    <Content Include="assets\plugins\slider\js\slider.js" />
+    <Content Include="assets\plugins\testimonial\css\owl.carousel.min.css" />
+    <Content Include="assets\plugins\testimonial\css\owl.theme.min.css" />
+    <Content Include="assets\plugins\testimonial\js\owl.carousel.min.js" />
+    <Content Include="assets\webfonts\fa-brands-400.svg" />
+    <Content Include="assets\webfonts\fa-regular-400.svg" />
+    <Content Include="assets\webfonts\fa-solid-900.svg" />
+    <Content Include="assets\webfonts\Simple-Line-Icons.svg" />
+    <Content Include="assets\webfonts\Simple-Line-Iconsb26c.svg" />
+    <Content Include="assets\webfonts\themify.svg" />
+    <Content Include="contact.html" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\app.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="css\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="forms\css\bootstrap.css" />
+    <Content Include="forms\css\responsive.css" />
+    <Content Include="forms\css\style.css" />
+    <Content Include="forms\images\a-1.jpg" />
+    <Content Include="forms\images\a-2.jpg" />
+    <Content Include="forms\images\award.png" />
+    <Content Include="forms\images\books-stack-of-three.png" />
+    <Content Include="forms\images\c-1.jpg" />
+    <Content Include="forms\images\c-2.jpg" />
+    <Content Include="forms\images\c-3.jpg" />
+    <Content Include="forms\images\c-4.jpg" />
+    <Content Include="forms\images\c-5.jpg" />
+    <Content Include="forms\images\client.png" />
+    <Content Include="forms\images\event-img.jpg" />
+    <Content Include="forms\images\hero-bg.jpg" />
+    <Content Include="forms\images\link.png" />
+    <Content Include="forms\images\login-bg.jpg" />
+    <Content Include="forms\images\menu.png" />
+    <Content Include="forms\images\next.png" />
+    <Content Include="forms\images\prev.png" />
+    <Content Include="forms\images\search-icon.png" />
+    <Content Include="forms\images\side-img.png" />
+    <Content Include="forms\images\study.png" />
+    <Content Include="forms\js\bootstrap.js" />
+    <Content Include="forms\js\jquery-3.4.1.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\a-1.jpg" />
+    <Content Include="images\a-2.jpg" />
+    <Content Include="images\award.png" />
+    <Content Include="images\books-stack-of-three.png" />
+    <Content Include="images\c-1.jpg" />
+    <Content Include="images\c-2.jpg" />
+    <Content Include="images\c-3.jpg" />
+    <Content Include="images\c-4.jpg" />
+    <Content Include="images\c-5.jpg" />
+    <Content Include="images\client.png" />
+    <Content Include="images\event-img.jpg" />
+    <Content Include="images\hero-bg.jpg" />
+    <Content Include="images\link.png" />
+    <Content Include="images\login-bg.jpg" />
+    <Content Include="images\menu.png" />
+    <Content Include="images\next.png" />
+    <Content Include="images\pexels-karolina-grabowska-4021801.jpg" />
+    <Content Include="images\prev.png" />
+    <Content Include="images\search-icon.png" />
+    <Content Include="images\side-img.png" />
+    <Content Include="images\study.png" />
+    <Content Include="index.html" />
+    <Content Include="loginform\css\style.css" />
+    <Content Include="loginform\fonts\linearicons\fonts\Linearicons-Free.svg" />
+    <Content Include="loginform\fonts\linearicons\Read Me.txt" />
+    <Content Include="loginform\fonts\linearicons\style.css" />
+    <Content Include="loginform\images\doctor.jpg" />
+    <Content Include="loginform\images\image-1.png" />
+    <Content Include="loginform\images\image-2.png" />
+    <Content Include="loginform\images\login.jpg" />
+    <Content Include="loginform\images\logindoctor.jpg" />
+    <Content Include="loginform\images\loginman.jpg" />
+    <Content Include="loginform\js\jquery-3.3.1.min.js" />
+    <Content Include="loginform\js\main.js" />
+    <Content Include="Models\dashboard.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>dashboard.Context.cs</LastGenOutput>
+      <DependentUpon>dashboard.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\dashboard.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dashboard.edmx</DependentUpon>
+      <LastGenOutput>dashboard.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\dashboard.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dashboard.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\dashboard.edmx.diagram">
+      <DependentUpon>dashboard.edmx</DependentUpon>
+    </Content>
+    <Content Include="assets\.sass-cache\03f7563936555af25ed76a25faac13ac47635709\about.scssc" />
+    <Content Include="assets\.sass-cache\03f7563936555af25ed76a25faac13ac47635709\features.scssc" />
+    <Content Include="assets\.sass-cache\03f7563936555af25ed76a25faac13ac47635709\footer.scssc" />
+    <Content Include="assets\.sass-cache\03f7563936555af25ed76a25faac13ac47635709\gallery.scssc" />
+    <Content Include="assets\.sass-cache\03f7563936555af25ed76a25faac13ac47635709\header.scssc" />
+    <Content Include="assets\.sass-cache\03f7563936555af25ed76a25faac13ac47635709\pricing.scssc" />
+    <Content Include="assets\.sass-cache\03f7563936555af25ed76a25faac13ac47635709\review.scssc" />
+    <Content Include="assets\.sass-cache\03f7563936555af25ed76a25faac13ac47635709\slider.scssc" />
+    <Content Include="assets\.sass-cache\05e40c16e07218e3bc43358ea0c3cb86c24a7d5b\about.scssc" />
+    <Content Include="assets\.sass-cache\05e40c16e07218e3bc43358ea0c3cb86c24a7d5b\header.scssc" />
+    <Content Include="assets\.sass-cache\05e40c16e07218e3bc43358ea0c3cb86c24a7d5b\slider.scssc" />
+    <Content Include="assets\.sass-cache\0af437460c028a91615c77f511a2985aa06eff34\style.scssc" />
+    <Content Include="assets\.sass-cache\0af437460c028a91615c77f511a2985aa06eff34\_variable.scssc" />
+    <Content Include="assets\.sass-cache\11580a680865f27cd75c93116e6c75aab72ec7c5\responsive.scssc" />
+    <Content Include="assets\.sass-cache\2839350961acaec5b539ad8bdc5c69e146e83a87\style.scssc" />
+    <Content Include="assets\.sass-cache\2839350961acaec5b539ad8bdc5c69e146e83a87\_variable.scssc" />
+    <Content Include="assets\.sass-cache\2b87da3f44a8981a5921539939870dba475ab425\responsive.scssc" />
+    <Content Include="assets\.sass-cache\30404ddb104fce8575b98ba0f22eb04c23574d30\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\30f32e2e4f90d1089ae5b38f7a3193f8b4391bc2\style.scssc" />
+    <Content Include="assets\.sass-cache\30f32e2e4f90d1089ae5b38f7a3193f8b4391bc2\_variable.scssc" />
+    <Content Include="assets\.sass-cache\36e03cff60fa197b5c586d4ded27e632b5e01b95\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\375a0424c7d7137ed78c12b52073e13cd4ce45bd\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\38cc1bec42f94f19a9cbdfc620a99b5c7831f613\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\3a0f71503705755c68b326dbe72cb7582facce16\style.scssc" />
+    <Content Include="assets\.sass-cache\3a0f71503705755c68b326dbe72cb7582facce16\_variable.scssc" />
+    <Content Include="assets\.sass-cache\3a416854cc9021fd0b3018c88bf854e35109f84c\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\3a8f91f4404a31575e487a92604ad89c9bdada51\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\3d1baef330597db9bd0fd23a93609cf52f6ee54d\style.scssc" />
+    <Content Include="assets\.sass-cache\3d1baef330597db9bd0fd23a93609cf52f6ee54d\_variable.scssc" />
+    <Content Include="assets\.sass-cache\41eba974b99cfedac50488d5999864292a025e01\responsive.scssc" />
+    <Content Include="assets\.sass-cache\4a9329b690d65edd49ecb52bbf9e2120442c7837\style.scssc" />
+    <Content Include="assets\.sass-cache\4a9329b690d65edd49ecb52bbf9e2120442c7837\_variable.scssc" />
+    <Content Include="assets\.sass-cache\4cf31ba85872f8ecc91089fbd175ab492123fdf5\style.scssc" />
+    <Content Include="assets\.sass-cache\4cf31ba85872f8ecc91089fbd175ab492123fdf5\_variable.scssc" />
+    <Content Include="assets\.sass-cache\4e787520c625514154474c8fc5dd007f52580de8\style.scssc" />
+    <Content Include="assets\.sass-cache\4e787520c625514154474c8fc5dd007f52580de8\_variable.scssc" />
+    <Content Include="assets\.sass-cache\52b0c3d6d2d177a4e6842b684bec7e8e1d541917\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\52cf9642a27c1c1513b0cd77e5419b14f5323314\responsive.scssc" />
+    <Content Include="assets\.sass-cache\571b1f9af9ef881140c4dc30d6c2454f0c9a002d\responsive.scssc" />
+    <Content Include="assets\.sass-cache\58ac22b91460ef8b46a50a7d7ec20fa56167f79b\style.scssc" />
+    <Content Include="assets\.sass-cache\58ac22b91460ef8b46a50a7d7ec20fa56167f79b\_variable.scssc" />
+    <Content Include="assets\.sass-cache\6474a3d4b0629bea971d701cf9c416682ca7e632\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\6a1c7613f5cdf54b805cd034f4cd5fc6a07a3c69\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\6fcffa86ae35b0fe68c6e8dbfcd1f9a3d2bbe07f\responsive.scssc" />
+    <Content Include="assets\.sass-cache\71329e2339e7ad9e2fecb92b1d80a3d5b7a7e853\style.scssc" />
+    <Content Include="assets\.sass-cache\71329e2339e7ad9e2fecb92b1d80a3d5b7a7e853\_variable.scssc" />
+    <Content Include="assets\.sass-cache\72b5f98765ef2dca73dc3e95394a6fa50831ee7a\responsive.scssc" />
+    <Content Include="assets\.sass-cache\7518acd6aadb1f7574d555d374ff90d0adef0ef2\style.scssc" />
+    <Content Include="assets\.sass-cache\7518acd6aadb1f7574d555d374ff90d0adef0ef2\_variable.scssc" />
+    <Content Include="assets\.sass-cache\76f28b81785adf134a2b11a53c55e3c4d6e76edd\style.scssc" />
+    <Content Include="assets\.sass-cache\76f28b81785adf134a2b11a53c55e3c4d6e76edd\_variable.scssc" />
+    <Content Include="assets\.sass-cache\799e22dbfbc7c0599c9ec736c964e964251a5aaf\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\a6b8eb64f6c1a6fa14223f914ba056edc942215b\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\ab1731c95c67dd9e92510b107e159ce031792aff\style.scssc" />
+    <Content Include="assets\.sass-cache\ab1731c95c67dd9e92510b107e159ce031792aff\_variable.scssc" />
+    <Content Include="assets\.sass-cache\b5c97feb6f6e20e58b04034e86e92d07edefd374\style.scssc" />
+    <Content Include="assets\.sass-cache\b5c97feb6f6e20e58b04034e86e92d07edefd374\_variable.scssc" />
+    <Content Include="assets\.sass-cache\b5d58ad67431a9425d719d4365cf1bca641cf4ae\style.scssc" />
+    <Content Include="assets\.sass-cache\b5d58ad67431a9425d719d4365cf1bca641cf4ae\_variable.scssc" />
+    <Content Include="assets\.sass-cache\b9361704443f246ad351ac2af04c1e387fdad079\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\design.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\features.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\footer.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\gallery.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\header.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\products.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\review.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\slider.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\update.scssc" />
+    <Content Include="assets\.sass-cache\bdcda4b9533c9f6ce255960a661c810f7755a390\why_choos.scssc" />
+    <Content Include="assets\.sass-cache\cb19ab57e94e9373334c9407373cb5b46f933e01\responsive.scssc" />
+    <Content Include="assets\.sass-cache\d40a99c0290f977234388c7987a135c19e63303e\about.scssc" />
+    <Content Include="assets\.sass-cache\d40a99c0290f977234388c7987a135c19e63303e\features.scssc" />
+    <Content Include="assets\.sass-cache\d40a99c0290f977234388c7987a135c19e63303e\footer.scssc" />
+    <Content Include="assets\.sass-cache\d40a99c0290f977234388c7987a135c19e63303e\gallery.scssc" />
+    <Content Include="assets\.sass-cache\d40a99c0290f977234388c7987a135c19e63303e\header.scssc" />
+    <Content Include="assets\.sass-cache\d40a99c0290f977234388c7987a135c19e63303e\pricing.scssc" />
+    <Content Include="assets\.sass-cache\d40a99c0290f977234388c7987a135c19e63303e\review.scssc" />
+    <Content Include="assets\.sass-cache\d40a99c0290f977234388c7987a135c19e63303e\slider.scssc" />
+    <Content Include="assets\.sass-cache\dee0820f6c196d10b5861616947d0ade7a54bc67\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\e277497d15d9cfee9e0c36aef5e7e5d046a39ebb\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\eafedd0a0d6d56516e56ea00d4bc6100f7436051\basic_setup.scssc" />
+    <Content Include="assets\.sass-cache\f3288a336e12212267f138ae865aa593c039b30f\responsive.scssc" />
+    <Content Include="assets\.sass-cache\f9f5153a436b42d036ff6df58169fa6aaa4f9318\responsive.scssc" />
+    <Content Include="assets\config-scss.bat" />
+    <Content Include="assets\css\bootstrap.min.css.map" />
+    <Content Include="assets\css\style.css.map" />
+    <Content Include="assets\fonts\Montserrat-Bold.ttf" />
+    <Content Include="assets\fonts\Montserrat-Regular.ttf" />
+    <Content Include="assets\js\bootstrap.min.js.map" />
+    <Content Include="assets\js\popper.min.js.map" />
+    <Content Include="assets\scss\.sass-cache\87f88134b2e274406d696eddf2817a21a5f37943\style.scssc" />
+    <Content Include="assets\scss\.sass-cache\87f88134b2e274406d696eddf2817a21a5f37943\_variable.scssc" />
+    <Content Include="assets\scss\base\basic_setup.scss" />
+    <Content Include="assets\scss\base\Untitled-6" />
+    <Content Include="assets\scss\response\responsive.scss" />
+    <Content Include="assets\scss\style.css.map" />
+    <Content Include="assets\scss\style.scss" />
+    <Content Include="assets\scss\_variable.scss" />
+    <Content Include="assets\webfonts\fa-brands-400.eot" />
+    <Content Include="assets\webfonts\fa-brands-400.ttf" />
+    <Content Include="assets\webfonts\fa-brands-400.woff" />
+    <Content Include="assets\webfonts\fa-brands-400.woff2" />
+    <Content Include="assets\webfonts\fa-regular-400.eot" />
+    <Content Include="assets\webfonts\fa-regular-400.ttf" />
+    <Content Include="assets\webfonts\fa-regular-400.woff" />
+    <Content Include="assets\webfonts\fa-regular-400.woff2" />
+    <Content Include="assets\webfonts\fa-solid-900.eot" />
+    <Content Include="assets\webfonts\fa-solid-900.ttf" />
+    <Content Include="assets\webfonts\fa-solid-900.woff" />
+    <Content Include="assets\webfonts\fa-solid-900.woff2" />
+    <Content Include="assets\webfonts\Simple-Line-Icons.eot" />
+    <Content Include="assets\webfonts\Simple-Line-Icons.ttf" />
+    <Content Include="assets\webfonts\Simple-Line-Icons.woff" />
+    <Content Include="assets\webfonts\Simple-Line-Icons.woff2" />
+    <Content Include="assets\webfonts\Simple-Line-Iconsb26c.eot" />
+    <Content Include="assets\webfonts\Simple-Line-Iconsb26c.ttf" />
+    <Content Include="assets\webfonts\Simple-Line-Iconsb26c.woff" />
+    <Content Include="assets\webfonts\Simple-Line-Iconsb26c.woff2" />
+    <Content Include="assets\webfonts\themify.eot" />
+    <Content Include="assets\webfonts\themify.ttf" />
+    <Content Include="assets\webfonts\themify.woff" />
+    <Content Include="css\style.css.map" />
+    <Content Include="css\style.scss" />
+    <Content Include="forms\css\style.css.map" />
+    <Content Include="forms\css\style.scss" />
+    <Content Include="loginform\css\style.css.map" />
+    <Content Include="loginform\css\style.scss" />
+    <Content Include="loginform\fonts\linearicons\fonts\Linearicons-Free.eot" />
+    <Content Include="loginform\fonts\linearicons\fonts\Linearicons-Free.ttf" />
+    <Content Include="loginform\fonts\linearicons\fonts\Linearicons-Free.woff" />
+    <Content Include="loginform\fonts\linearicons\fonts\Linearicons-Free.woff2" />
+    <Content Include="loginform\fonts\linearicons\selection.json" />
+    <Content Include="loginform\fonts\muli\Muli-Bold.ttf" />
+    <Content Include="loginform\fonts\muli\Muli-Regular.ttf" />
+    <Content Include="loginform\fonts\muli\Muli-SemiBold.ttf" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Departments\Create.cshtml" />
+    <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Departments\Edit.cshtml" />
+    <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\Care_Units\Create.cshtml" />
+    <Content Include="Views\Care_Units\Delete.cshtml" />
+    <Content Include="Views\Care_Units\Edit.cshtml" />
+    <Content Include="Views\Care_Units\Index.cshtml" />
+    <Content Include="Views\Admins\Create.cshtml" />
+    <Content Include="Views\Admins\Delete.cshtml" />
+    <Content Include="Views\Admins\Details.cshtml" />
+    <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Admins\login2.cshtml" />
+    <Content Include="Views\Articals\Create.cshtml" />
+    <Content Include="Views\Articals\Delete.cshtml" />
+    <Content Include="Views\Articals\Details.cshtml" />
+    <Content Include="Views\Articals\Edit.cshtml" />
+    <Content Include="Views\Articals\Index.cshtml" />
+    <Content Include="Views\Newsses\Create.cshtml" />
+    <Content Include="Views\Newsses\Delete.cshtml" />
+    <Content Include="Views\Newsses\Details.cshtml" />
+    <Content Include="Views\Newsses\Edit.cshtml" />
+    <Content Include="Views\Newsses\Index.cshtml" />
+    <Content Include="Views\patients1\Create.cshtml" />
+    <Content Include="Views\patients1\Delete.cshtml" />
+    <Content Include="Views\patients1\Details.cshtml" />
+    <Content Include="Views\patients1\Edit.cshtml" />
+    <Content Include="Views\patients1\Index.cshtml" />
+    <Content Include="Views\BloodNeeds\Create.cshtml" />
+    <Content Include="Views\BloodNeeds\Delete.cshtml" />
+    <Content Include="Views\BloodNeeds\Details.cshtml" />
+    <Content Include="Views\BloodNeeds\Edit.cshtml" />
+    <Content Include="Views\BloodNeeds\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ImgUpload\" />
+    <Folder Include="Img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59828</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44349/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

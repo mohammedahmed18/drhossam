@@ -1,0 +1,153 @@
+﻿@model dashboard_HospitalGuide_.Models.patient
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>اداره المرضى</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="~/forms/css/bootstrap.css" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/forms/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/forms/css/responsive.css" rel="stylesheet" />
+    <script>
+        function onchangeselect1()
+        {
+            var l = document.getElementById("Care")
+            l.value = "__Select__"
+        }
+        function onchangeselect2() {
+            var l = document.getElementById("dept")
+            l.value = "__Select__"
+        }
+
+
+    </script>
+
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal" style="padding-top: 60px;padding-right:2px">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Patient_ID)
+            <section class="contact_section" style="width:1200px;padding-top:40px;background-color: #0AC88B;">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="contact-form" style="padding-top:4px">
+                                <h5>
+                                    تعديل مريض
+                                </h5>
+                                <form action="">
+
+                                    <div>
+                                        <label style="margin-left:470px;margin-bottom:1px;color:white">الاسم</label>
+                                        @Html.EditorFor(model => model.Patient_Name, new { htmlAttributes = new { @class = "form-control", placeholder = "الاسم" } })
+                                        @Html.ValidationMessageFor(model => model.Patient_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div>
+                                        <label style="margin-left:470px;margin-bottom:1px;color:white">العنوان</label>
+                                        @Html.EditorFor(model => model.Patient_Address, new { htmlAttributes = new { @class = "form-control", placeholder = "العنوان" } })
+                                        @Html.ValidationMessageFor(model => model.Patient_Address, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div>
+                                        <label style="margin-left:470px;margin-bottom:1px;color:white">تاريخ الميلاد</label>
+                                        @Html.EditorFor(model => model.Patient_DateOfBirth, new { htmlAttributes = new { @class = "form-control", placeholder = "تاريخ الميلاد" } })
+                                        @Html.ValidationMessageFor(model => model.Patient_DateOfBirth, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label style="margin-left:470px;margin-bottom:1px;color:white">الجنس</label>
+                                    <div style="display: flex;overflow: hidden;padding-left:270px">
+                                        @Html.RadioButtonFor(model => model.Patient_Gender, "ذكر") ذكر
+                                        @Html.RadioButtonFor(model => model.Patient_Gender, "انثى") انثى
+                                        @Html.ValidationMessageFor(model => model.Patient_Gender, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div>
+                                        <label style="margin-left:470px;margin-bottom:1px;color:white">الرقم القومى</label>
+                                        @Html.EditorFor(model => model.Patient_NationalID, new { htmlAttributes = new { @class = "form-control", placeholder = "الرقم القومى" } })
+                                        @Html.ValidationMessageFor(model => model.Patient_NationalID, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div>
+                                        <label style="margin-left:470px;margin-bottom:1px;color:white">الهاتف</label>
+
+                                        @Html.EditorFor(model => model.Patient_PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "الهاتف" } })
+                                        @Html.ValidationMessageFor(model => model.Patient_PhoneNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                    
+                                    <div>
+                                        <label style="margin-left:470px;margin-bottom:1px;color:white">القسم</label>
+                                        @{
+                                            string x = "x";
+                                            try
+                                            {
+                                                x = Model.Department.dept_Name;
+                                            }
+                                            catch (Exception)
+                                            {
+
+                                                x="__select__";
+                                            }
+                                            string m = "m";
+                                            try
+                                            {
+                                                m = Model.Care_Units.Care_Name;
+                                            }
+                                            catch (Exception)
+                                            {
+
+                                                m="__select__";
+                                            }
+                                        }
+                                        @Html.DropDownList("dept_ID", (SelectList)ViewBag.dept_ID, x, new { @class = "form-control", @id = "dept", @onchange = "onchangeselect1();" })
+                                        @Html.ValidationMessageFor(model => model.dept_ID, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div>
+                                        <label style="margin-left:470px;margin-bottom:1px;color:white">الرعايه</label>
+                                        @Html.DropDownList("Care_ID", (SelectList)ViewBag.Care_ID,m, htmlAttributes: new { @class = "form-control",@id= "Care" ,@onchange= "onchangeselect2();" }),
+                                        @Html.ValidationMessageFor(model => model.Care_ID, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <input type="submit" value="تعديل" class="btn_on-hover" style="background-color: white; color: #0AC88B" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="right:370px;top:-50px;">
+                            <div class="detail-box">
+                                <div class="heading_container">
+                                    <h3>
+                                        تعديل
+                                    </h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

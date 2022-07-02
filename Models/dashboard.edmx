@@ -1,0 +1,709 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Hospital_Services_GiudDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Admin_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Articals">
+          <Key>
+            <PropertyRef Name="Artical_ID" />
+          </Key>
+          <Property Name="Artical_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Artical_title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Artical_Subtitle" Type="nvarchar(max)" />
+          <Property Name="Artical_Date" Type="date" />
+          <Property Name="Artical_Image" Type="nvarchar(max)" />
+          <Property Name="Artical_Content" Type="nvarchar(max)" />
+          <Property Name="Admin_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Blood">
+          <Key>
+            <PropertyRef Name="Blood_ID" />
+          </Key>
+          <Property Name="Blood_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Blood" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BloodNeed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsNeeded" Type="bit" />
+          <Property Name="Blood_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Care_Units">
+          <Key>
+            <PropertyRef Name="Care_ID" />
+          </Key>
+          <Property Name="Care_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Care_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Care_NumberOfemptybed" Type="int" Nullable="false" />
+          <Property Name="Care_NumberOfbed" Type="int" Nullable="false" />
+          <Property Name="Care_Info" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Care_Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Care_Numberofemployees" Type="int" Nullable="false" />
+          <Property Name="Admin_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="dept_ID" />
+          </Key>
+          <Property Name="dept_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dept_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dept_NumberOfemptybed" Type="int" Nullable="false" />
+          <Property Name="dept_NumberOfBed" Type="int" Nullable="false" />
+          <Property Name="dept_Info" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dept_Descripation" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dept_NumberOfEmp" Type="int" Nullable="false" />
+          <Property Name="Admin_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Newss">
+          <Key>
+            <PropertyRef Name="News_ID" />
+          </Key>
+          <Property Name="News_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="News_Content" Type="nvarchar(max)" />
+          <Property Name="News_Image" Type="nvarchar(max)" />
+          <Property Name="News_Date" Type="datetime" Nullable="false" />
+          <Property Name="Admin_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="patient">
+          <Key>
+            <PropertyRef Name="Patient_ID" />
+          </Key>
+          <Property Name="Patient_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patient_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patient_DateOfBirth" Type="date" />
+          <Property Name="Patient_PhoneNumber" Type="nvarchar" MaxLength="11" />
+          <Property Name="Patient_Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patient_NationalID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patient_Address" Type="nvarchar(max)" />
+          <Property Name="Admin_ID" Type="int" />
+          <Property Name="dept_ID" Type="int" />
+          <Property Name="Care_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Admin_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_Roles1">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articals_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="Articals" Type="Self.Articals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="Articals">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BloodNeed_Blood">
+          <End Role="Blood" Type="Self.Blood" Multiplicity="0..1" />
+          <End Role="BloodNeed" Type="Self.BloodNeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blood">
+              <PropertyRef Name="Blood_ID" />
+            </Principal>
+            <Dependent Role="BloodNeed">
+              <PropertyRef Name="Blood_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Care_Units_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Care_Units" Type="Self.Care_Units" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="Care_Units">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Newss_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="Newss" Type="Self.Newss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="Newss">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_patient_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="patient" Type="Self.patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_patient_Care_Units">
+          <End Role="Care_Units" Type="Self.Care_Units" Multiplicity="0..1" />
+          <End Role="patient" Type="Self.patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Care_Units">
+              <PropertyRef Name="Care_ID" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="Care_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_patient_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="patient" Type="Self.patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="dept_ID" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="dept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Hospital_Services_GiudDBModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Articals" EntityType="Self.Articals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blood" EntityType="Self.Blood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BloodNeed" EntityType="Self.BloodNeed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Care_Units" EntityType="Self.Care_Units" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Newss" EntityType="Self.Newss" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="patient" EntityType="Self.patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Admin_Roles" Association="Self.FK_Admin_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_Roles1" Association="Self.FK_Admin_Roles1">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articals_Admin" Association="Self.FK_Articals_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Articals" EntitySet="Articals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BloodNeed_Blood" Association="Self.FK_BloodNeed_Blood">
+            <End Role="Blood" EntitySet="Blood" />
+            <End Role="BloodNeed" EntitySet="BloodNeed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Care_Units_Admin" Association="Self.FK_Care_Units_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Care_Units" EntitySet="Care_Units" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Admin" Association="Self.FK_Department_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Newss_Admin" Association="Self.FK_Newss_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Newss" EntitySet="Newss" />
+          </AssociationSet>
+          <AssociationSet Name="FK_patient_Admin" Association="Self.FK_patient_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="patient" EntitySet="patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_patient_Care_Units" Association="Self.FK_patient_Care_Units">
+            <End Role="Care_Units" EntitySet="Care_Units" />
+            <End Role="patient" EntitySet="patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_patient_Department" Association="Self.FK_patient_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="patient" EntitySet="patient" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Hospital_Services_GiudDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Admin_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Admin_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Care_Units" Relationship="Self.FK_Care_Units_Admin" FromRole="Admin" ToRole="Care_Units" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_Department_Admin" FromRole="Admin" ToRole="Department" />
+          <Property Name="Role_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role11" Relationship="Hospital_Services_GiudDBModel.FK_Admin_Roles11" FromRole="Admin" ToRole="Role" />
+          <NavigationProperty Name="Articals" Relationship="Hospital_Services_GiudDBModel.FK_Articals_Admin" FromRole="Admin" ToRole="Artical" />
+          <NavigationProperty Name="Newsses" Relationship="Hospital_Services_GiudDBModel.FK_Newss_Admin" FromRole="Admin" ToRole="Newss" />
+          <NavigationProperty Name="patients" Relationship="Hospital_Services_GiudDBModel.FK_patient_Admin" FromRole="Admin" ToRole="patient" />
+        </EntityType>
+        <EntityType Name="Care_Units">
+          <Key>
+            <PropertyRef Name="Care_ID" />
+          </Key>
+          <Property Name="Care_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Care_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Care_NumberOfemptybed" Type="Int32" Nullable="false" />
+          <Property Name="Care_NumberOfbed" Type="Int32" Nullable="false" />
+          <Property Name="Care_Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Care_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Care_Numberofemployees" Type="Int32" Nullable="false" />
+          <Property Name="Admin_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Care_Units_Admin" FromRole="Care_Units" ToRole="Admin" />
+          <NavigationProperty Name="patients" Relationship="Hospital_Services_GiudDBModel.FK_patient_Care_Units" FromRole="Care_Units" ToRole="patient" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="dept_ID" />
+          </Key>
+          <Property Name="dept_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dept_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dept_NumberOfemptybed" Type="Int32" Nullable="false" />
+          <Property Name="dept_NumberOfBed" Type="Int32" Nullable="false" />
+          <Property Name="dept_Info" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dept_Descripation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dept_NumberOfEmp" Type="Int32" Nullable="false" />
+          <Property Name="Admin_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Department_Admin" FromRole="Department" ToRole="Admin" />
+          <NavigationProperty Name="patients" Relationship="Hospital_Services_GiudDBModel.FK_patient_Department" FromRole="Department" ToRole="patient" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Care_Units_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Care_Units" Type="Self.Care_Units" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="Care_Units">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Hospital_Services_GiudDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Care_Units" EntityType="Self.Care_Units" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_Care_Units_Admin" Association="Self.FK_Care_Units_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Care_Units" EntitySet="Care_Units" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Admin" Association="Self.FK_Department_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="Hospital_Services_GiudDBModel.Role" />
+          <AssociationSet Name="FK_Admin_Roles11" Association="Hospital_Services_GiudDBModel.FK_Admin_Roles11">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <EntitySet Name="Articals" EntityType="Hospital_Services_GiudDBModel.Artical" />
+          <EntitySet Name="Newsses" EntityType="Hospital_Services_GiudDBModel.Newss" />
+          <AssociationSet Name="FK_Articals_Admin" Association="Hospital_Services_GiudDBModel.FK_Articals_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Artical" EntitySet="Articals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Newss_Admin" Association="Hospital_Services_GiudDBModel.FK_Newss_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Newss" EntitySet="Newsses" />
+          </AssociationSet>
+          <EntitySet Name="patients" EntityType="Hospital_Services_GiudDBModel.patient" />
+          <AssociationSet Name="FK_patient_Admin" Association="Hospital_Services_GiudDBModel.FK_patient_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="patient" EntitySet="patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_patient_Care_Units" Association="Hospital_Services_GiudDBModel.FK_patient_Care_Units">
+            <End Role="Care_Units" EntitySet="Care_Units" />
+            <End Role="patient" EntitySet="patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_patient_Department" Association="Hospital_Services_GiudDBModel.FK_patient_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="patient" EntitySet="patients" />
+          </AssociationSet>
+          <EntitySet Name="Bloods" EntityType="Hospital_Services_GiudDBModel.Blood" />
+          <EntitySet Name="BloodNeeds" EntityType="Hospital_Services_GiudDBModel.BloodNeed" />
+          <AssociationSet Name="FK_BloodNeed_Blood" Association="Hospital_Services_GiudDBModel.FK_BloodNeed_Blood">
+            <End Role="Blood" EntitySet="Bloods" />
+            <End Role="BloodNeed" EntitySet="BloodNeeds" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Admins11" Relationship="Hospital_Services_GiudDBModel.FK_Admin_Roles11" FromRole="Role" ToRole="Admin" />
+        </EntityType>
+        <Association Name="FK_Admin_Roles11">
+          <End Type="Hospital_Services_GiudDBModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="Hospital_Services_GiudDBModel.Admin" Role="Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Artical">
+          <Key>
+            <PropertyRef Name="Artical_ID" />
+          </Key>
+          <Property Name="Artical_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Artical_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Artical_Subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Artical_Date" Type="DateTime" Precision="0" />
+          <Property Name="Artical_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Artical_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_ID" Type="Int32" />
+          <NavigationProperty Name="Admin" Relationship="Hospital_Services_GiudDBModel.FK_Articals_Admin" FromRole="Artical" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="Newss">
+          <Key>
+            <PropertyRef Name="News_ID" />
+          </Key>
+          <Property Name="News_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="News_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="News_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="News_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Admin_ID" Type="Int32" />
+          <NavigationProperty Name="Admin" Relationship="Hospital_Services_GiudDBModel.FK_Newss_Admin" FromRole="Newss" ToRole="Admin" />
+        </EntityType>
+        <Association Name="FK_Articals_Admin">
+          <End Type="Hospital_Services_GiudDBModel.Admin" Role="Admin" Multiplicity="0..1" />
+          <End Type="Hospital_Services_GiudDBModel.Artical" Role="Artical" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="Artical">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Newss_Admin">
+          <End Type="Hospital_Services_GiudDBModel.Admin" Role="Admin" Multiplicity="0..1" />
+          <End Type="Hospital_Services_GiudDBModel.Newss" Role="Newss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="Newss">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="patient">
+          <Key>
+            <PropertyRef Name="Patient_ID" />
+          </Key>
+          <Property Name="Patient_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patient_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patient_DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Patient_PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Patient_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patient_NationalID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patient_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_ID" Type="Int32" />
+          <Property Name="dept_ID" Type="Int32" />
+          <Property Name="Care_ID" Type="Int32" />
+          <NavigationProperty Name="Admin" Relationship="Hospital_Services_GiudDBModel.FK_patient_Admin" FromRole="patient" ToRole="Admin" />
+          <NavigationProperty Name="Care_Units" Relationship="Hospital_Services_GiudDBModel.FK_patient_Care_Units" FromRole="patient" ToRole="Care_Units" />
+          <NavigationProperty Name="Department" Relationship="Hospital_Services_GiudDBModel.FK_patient_Department" FromRole="patient" ToRole="Department" />
+        </EntityType>
+        <Association Name="FK_patient_Admin">
+          <End Type="Hospital_Services_GiudDBModel.Admin" Role="Admin" Multiplicity="0..1" />
+          <End Type="Hospital_Services_GiudDBModel.patient" Role="patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_ID" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_patient_Care_Units">
+          <End Type="Hospital_Services_GiudDBModel.Care_Units" Role="Care_Units" Multiplicity="0..1" />
+          <End Type="Hospital_Services_GiudDBModel.patient" Role="patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Care_Units">
+              <PropertyRef Name="Care_ID" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="Care_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_patient_Department">
+          <End Type="Hospital_Services_GiudDBModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="Hospital_Services_GiudDBModel.patient" Role="patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="dept_ID" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="dept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Blood">
+          <Key>
+            <PropertyRef Name="Blood_ID" />
+          </Key>
+          <Property Name="Blood_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Blood1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BloodNeeds" Relationship="Hospital_Services_GiudDBModel.FK_BloodNeed_Blood" FromRole="Blood" ToRole="BloodNeed" />
+        </EntityType>
+        <EntityType Name="BloodNeed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsNeeded" Type="Boolean" />
+          <Property Name="Blood_ID" Type="Int32" />
+          <NavigationProperty Name="Blood" Relationship="Hospital_Services_GiudDBModel.FK_BloodNeed_Blood" FromRole="BloodNeed" ToRole="Blood" />
+        </EntityType>
+        <Association Name="FK_BloodNeed_Blood">
+          <End Type="Hospital_Services_GiudDBModel.Blood" Role="Blood" Multiplicity="0..1" />
+          <End Type="Hospital_Services_GiudDBModel.BloodNeed" Role="BloodNeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blood">
+              <PropertyRef Name="Blood_ID" />
+            </Principal>
+            <Dependent Role="BloodNeed">
+              <PropertyRef Name="Blood_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Hospital_Services_GiudDBModelStoreContainer" CdmEntityContainer="Hospital_Services_GiudDBEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+                <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+                <ScalarProperty Name="Admin_Password" ColumnName="Admin_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Care_Units">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.Care_Units">
+              <MappingFragment StoreEntitySet="Care_Units">
+                <ScalarProperty Name="Care_ID" ColumnName="Care_ID" />
+                <ScalarProperty Name="Care_Name" ColumnName="Care_Name" />
+                <ScalarProperty Name="Care_NumberOfemptybed" ColumnName="Care_NumberOfemptybed" />
+                <ScalarProperty Name="Care_NumberOfbed" ColumnName="Care_NumberOfbed" />
+                <ScalarProperty Name="Care_Info" ColumnName="Care_Info" />
+                <ScalarProperty Name="Care_Description" ColumnName="Care_Description" />
+                <ScalarProperty Name="Care_Numberofemployees" ColumnName="Care_Numberofemployees" />
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="dept_ID" ColumnName="dept_ID" />
+                <ScalarProperty Name="dept_Name" ColumnName="dept_Name" />
+                <ScalarProperty Name="dept_NumberOfemptybed" ColumnName="dept_NumberOfemptybed" />
+                <ScalarProperty Name="dept_NumberOfBed" ColumnName="dept_NumberOfBed" />
+                <ScalarProperty Name="dept_Info" ColumnName="dept_Info" />
+                <ScalarProperty Name="dept_Descripation" ColumnName="dept_Descripation" />
+                <ScalarProperty Name="dept_NumberOfEmp" ColumnName="dept_NumberOfEmp" />
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articals">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.Artical">
+              <MappingFragment StoreEntitySet="Articals">
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+                <ScalarProperty Name="Artical_Content" ColumnName="Artical_Content" />
+                <ScalarProperty Name="Artical_Image" ColumnName="Artical_Image" />
+                <ScalarProperty Name="Artical_Date" ColumnName="Artical_Date" />
+                <ScalarProperty Name="Artical_Subtitle" ColumnName="Artical_Subtitle" />
+                <ScalarProperty Name="Artical_title" ColumnName="Artical_title" />
+                <ScalarProperty Name="Artical_ID" ColumnName="Artical_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Newsses">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.Newss">
+              <MappingFragment StoreEntitySet="Newss">
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+                <ScalarProperty Name="News_Date" ColumnName="News_Date" />
+                <ScalarProperty Name="News_Image" ColumnName="News_Image" />
+                <ScalarProperty Name="News_Content" ColumnName="News_Content" />
+                <ScalarProperty Name="News_ID" ColumnName="News_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="patients">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.patient">
+              <MappingFragment StoreEntitySet="patient">
+                <ScalarProperty Name="Care_ID" ColumnName="Care_ID" />
+                <ScalarProperty Name="dept_ID" ColumnName="dept_ID" />
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+                <ScalarProperty Name="Patient_Address" ColumnName="Patient_Address" />
+                <ScalarProperty Name="Patient_NationalID" ColumnName="Patient_NationalID" />
+                <ScalarProperty Name="Patient_Gender" ColumnName="Patient_Gender" />
+                <ScalarProperty Name="Patient_PhoneNumber" ColumnName="Patient_PhoneNumber" />
+                <ScalarProperty Name="Patient_DateOfBirth" ColumnName="Patient_DateOfBirth" />
+                <ScalarProperty Name="Patient_Name" ColumnName="Patient_Name" />
+                <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bloods">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.Blood">
+              <MappingFragment StoreEntitySet="Blood">
+                <ScalarProperty Name="Blood1" ColumnName="Blood" />
+                <ScalarProperty Name="Blood_ID" ColumnName="Blood_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BloodNeeds">
+            <EntityTypeMapping TypeName="Hospital_Services_GiudDBModel.BloodNeed">
+              <MappingFragment StoreEntitySet="BloodNeed">
+                <ScalarProperty Name="Blood_ID" ColumnName="Blood_ID" />
+                <ScalarProperty Name="IsNeeded" ColumnName="IsNeeded" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
